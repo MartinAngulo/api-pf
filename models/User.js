@@ -14,12 +14,13 @@ const userSchema = new Schema({
       },
     password: {
         type: String,
-        required: true,
-        unique : true
+        unique : true,
+        required: true
       },
     avatar: {
       type: String
     },
+  
     plan: {
         type: String,
         enum: ['normal', 'premium'],
@@ -41,6 +42,9 @@ const userSchema = new Schema({
       ref: 'Routines' 
     }],
     userinfo: [userinfo],
+    feedback: {
+      type : String
+    }
 
 
 })

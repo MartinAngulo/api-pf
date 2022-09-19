@@ -39,7 +39,7 @@ router.post('/login', async (req, res) => { // Validando las credenciales y devu
   
     const isValid = await bcrypt.compare(password, User.password);
     if(isValid) {
-      const token = jwt.sign({email: email, name : User.name, id : User._id}, "" + SECRET);
+      const token = jwt.sign({email: email, name : User.name, id : User._id}, "" + SECRET, { expiresIn : '12h'});
       return res.status(200).json(token)
     }else {
       return res.status(401).send('Password not valid')
@@ -50,8 +50,8 @@ router.post('/login', async (req, res) => { // Validando las credenciales y devu
 });
 
 router.get('/login/google', (req,res) => {
-  res.redirect('https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth&client_id=553882700243-5u6lingb04c86igau7nr6kjpicu042cl.apps.googleusercontent.com&access_type=offline&response_type=code&prompt=consent&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email')
-})
+  res.redirect('https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=http%3A%2F%2Flocalhost%3A3001%2FauthGoogle&client_id=553882700243-5u6lingb04c86igau7nr6kjpicu042cl.apps.googleusercontent.com&access_type=offline&response_type=code&prompt=consent&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email')
+});
 
 router.get('/exercises', async (req, res) =>{ // Devuelve unos ejercicios para mostrar
   const Exercises = await exercise.find().limit(15);
