@@ -39,9 +39,9 @@ module.exports={
                 }
             ],
             back_urls: {
-                'success': 'http://localhost:3001/feedback',
-                'failure': 'http://localhost:3000',
-                'pending': 'http://localhost:3001/feedback',
+                'success': 'https://api-pf-xi.vercel.app/feedback',
+                'failure': 'https://pf-app-five.vercel.app',
+                'pending': 'https://api-pf-xi.vercel.app/feedback',
             },
             auto_return: 'approved',
         }
