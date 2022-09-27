@@ -48,7 +48,10 @@ const userSchema = new Schema({
       type : String
     },
     fav : [{
-      name : {
+      id : {
+        type : String
+      },
+      name: {
         type : String
       }
     }],
