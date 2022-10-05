@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
-const userinfo = require('./UserInfo.js')
+const userinfo = require('./UserInfo.js');
+const routines = require('./Routines.js')
 
 const userSchema = new Schema({
 
@@ -39,10 +40,7 @@ const userSchema = new Schema({
     lastLogin: {
         type: Date
     },
-    routines: [{ 
-      type: Schema.Types.ObjectId, 
-      ref: 'Routines' 
-    }],
+    routines: [routines],
     userinfo: [userinfo],
     feedback: {
       type : String
@@ -50,14 +48,15 @@ const userSchema = new Schema({
     fav : [{
       id : {
         type : String
-      },
-      name: {
-        type : String
       }
     }],
     status : {
       type : String,
       default : 'activated'
+    },
+    superAdmin : {
+      type : Boolean,
+      default : false
     }
 })
 

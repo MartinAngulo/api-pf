@@ -13,7 +13,7 @@ const exerciseSchema = new Schema({
     },
     muscles: {
         type: String,
-        enum: ['upper_body', 'lower_body', 'functional', 'abs']
+        enum: ['upper_body', 'lower_body', 'functional', 'abs', 'stretching']
     },
     genre: {
         type: String,
@@ -30,7 +30,14 @@ const exerciseSchema = new Schema({
     },
     description : {
         type : String
-    }
+    },
+    feedback:[{
+        email : {type : String},
+        comment : {type : String},
+        rating : {type : String},
+        avatar : {type : String},
+        report : [{type : String}]
+    }]
 })
 
 module.exports = model('Exercise', exerciseSchema);
